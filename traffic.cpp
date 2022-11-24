@@ -17,8 +17,13 @@
 
 using namespace std;
 
-recOfChall();
+
 recOfVeh();
+trafContBooth();
+delay();
+recOfChall();
+vehSearch();
+helpInfo();
 
 class SmartTrafficManagementSystem{
 
@@ -100,6 +105,7 @@ public:
                     helpInfo();
                     break;
             }
+            
         } else{
             cout<<"Enter Valid option !!"<<endl;
             delay();
@@ -115,34 +121,18 @@ public:
         using namespace std::this_thread; // sleep_for, sleep_until
         using namespace std::chrono; // nanoseconds, system_clock, seconds
 
-        sleep_for(nanoseconds(1000000));
+        sleep_for(nanoseconds(100000));
         sleep_until(system_clock::now() + seconds(1));
     }
-    void delay1()
-    {
-        using namespace std::this_thread; // sleep_for, sleep_until
-        using namespace std::chrono; // nanoseconds, system_clock, seconds
-
-        sleep_for(nanoseconds(1000000000));
-        sleep_until(system_clock::now() + seconds(1));
-    }
-    void delay2()
-    {
-        using namespace std::this_thread; // sleep_for, sleep_until
-        using namespace std::chrono; // nanoseconds, system_clock, seconds
-
-        sleep_for(nanoseconds(100000000));
-        sleep_until(system_clock::now() + seconds(1));
-    }
+    
     int recOfVeh()
-    {
+    {   
+        int ROVChoice{0};
         cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                            WELCOME TO                                                               *"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                  SMART TRAFFIC MANAGEMENT SYSTEM                                                    *"<<endl;
-        cout<<"*                                                                                                                                     *"<<endl;
-        cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                      * Record of Vehicles *                                                         *"<<endl;
@@ -154,15 +144,14 @@ public:
         cout<<"*                                      3. Search a Vehicle Using Name of the owner                                                    *"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                     Enter 0 For Home                                                                                                *"<<endl;
-        cout<<"*                     Enter your choice __                                                                                            *"<<endl;
-        cout<<"*                                                                                                                                     *"<<endl;
-        cout<<"*                                                                                                                                     *"<<endl;
-        cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"                                                      Enter your choice -", cin>>ROVChoice;cout<<"                                           "<<endl;
 
-        int ROVChoice{0};
-        cin>>ROVChoice;
+        
+        recOfVeh_1();
+        recOfVeh_2();
+        recOfVeh_3();
         switch (ROVChoice)
         {
             case 0:
@@ -329,6 +318,7 @@ public:
 
     void recOfChall()
     {
+        int ROCChoice{0};
         cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<"*                                                            WELCOME TO                                                               *"<<endl;
@@ -354,8 +344,12 @@ public:
         cout<<"*                                                                                                                                     *"<<endl;
         cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
 
-        int ROCChoice{0};
+
         cin>>ROCChoice;
+
+        recOfChall_1();
+        recOfChall_2();
+        recOfChall_3();
         switch (ROCChoice)
         {
             case 0:
