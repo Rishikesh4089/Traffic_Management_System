@@ -17,8 +17,8 @@
 
 using namespace std;
 
-
-
+recOfChall();
+recOfVeh();
 
 class SmartTrafficManagementSystem{
 
