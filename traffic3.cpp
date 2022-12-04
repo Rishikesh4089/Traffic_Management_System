@@ -1,7 +1,8 @@
-#include<bits/stdc++.h>
+#include"bits/stdc++.h"
 #include <fstream>
 #include <chrono> //for delay
 #include <stdlib.h>
+#include<thread>
 #include <ctime>
 #include "coord.cpp"
 #include<string.h>
@@ -56,12 +57,15 @@ class vehData
 		void view_data();
 		void show_data();
 		void header();
-		void search_data(char *);
+		void regSearch(char *);
 		void delete_data(char *);
 		void update_data(char *);
         void addChal();
         void chalReg();
         void chalName();
+        void booth1();
+        void booth2();
+        void booth3();
 };
 
 //function for delay
@@ -109,7 +113,7 @@ void onlyDisplay::menu()
     delay();
 
     system("clear");
-    int choice{0};
+    int choice;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     cout<<"**                                                                                                                                   **"<<endl;
@@ -175,9 +179,7 @@ void onlyDisplay::menu()
 //Authentication
 void onlyDisplay::authentication()
 {
-    system("color 0A");
     int pkey, i;
-    system("clr");
     coord(14, 0);
 	for(i=0; i<25; i++)
 	{ 
@@ -196,13 +198,11 @@ void onlyDisplay::authentication()
 	static int x=3;
 	cin >> pkey;
 	if(pkey == pass) {
-		system("color 0A");
         load();
         menu();
 	}
     else 
     {
-		system("color 4");
 	    coord(17, 4);
 		cout << "Sorry, you are not authorised..."<<endl;
 		coord(17, 4);
@@ -215,7 +215,18 @@ void onlyDisplay::authentication()
 //Loading screen
 void onlyDisplay::load()
 {
-
+    system("clear");
+    int r=0,c,q;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*                                                                   Loading...                                                        *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;      
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    
+    delay();
 }
 
 //Vehicle records
@@ -223,7 +234,7 @@ void features::recOfVeh()
 {
     onlyDisplay od;
     vehData vd;
-    int ROVChoice{0};
+    int ROVChoice;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<"*                                                            WELCOME TO                                                               *"<<endl;
@@ -268,11 +279,16 @@ int vehData::store_data()
     fstream fio;
     string line;
     coord(20,0);
-    cout << "Welcome to Registration of Vehicles"<<endl;
-    cout<<"Enter Registration number of the Vehicle in the first line "<<endl;
-    cout<<"Enter Name of the owner in the second line "<<endl;
-    cout<<endl<<"Enter './' to Exit ";
-    fio.open("/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfVehicles.txt", ios::app | ios::out | ios::in);
+    cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+    cout<<"*                                               Welcome to Registration of Vehicles                                                   *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*            Enter Registration number of the Vehicle in the first line                                                               *"<<endl;
+    cout<<"*            Enter Name of the owner in the second line                                                                               *"<<endl;
+    cout<<"*            Enter 0 to Exit                                                                                                          *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+
+    fio.open("registration.txt", ios::app | ios::out | ios::in);
 
     // Execute a loop If file successfully Opened
     while (fio) {
@@ -280,36 +296,41 @@ int vehData::store_data()
         // Read a Line from standard input
         getline(cin, line);
 
-        // Press -1 to exit
-        if (line == "./")
+
+        // Press 0 to exit
+        if (line == "0")
             break;
 
         // Write line in file
         fio << line << endl;
+
     }
     cout<<"Data Entered successfully !!"<<endl;
     delay();
 
     system("clear");
     f.recOfVeh();
-
+    return 0;
 };
 
-void recOfVeh_2()
+void vehData::regSearch(char *)
 {
     onlyDisplay od;
+    features f;
     system("clear");
-    string path = "/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfVehicles.txt";
+    string path = "RecordOfVehicles.txt";
     ifstream file( path.c_str() );
 
 
     if( file.is_open() )
     {
-        cout << "                    Welcome to Registration of Vehicles\n" ;
-
-        cout <<endl<< "Write the Registration number of the vehicle you want to searching for\n" ;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*                                               Welcome to Registration of Vehicles                                                   *"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*                             Write the Registration number of the vehicle you want to searching for                                  *"<<endl;
         string word ;
-        cin >> word ;
+        cout<<"*                              ", cin >> word ;
 
         int countwords = 0 ;
         string candidate ;
@@ -329,7 +350,7 @@ void recOfVeh_2()
             }
             else
             {
-                recOfVeh_2();
+                f.recOfVeh();
             }
         }
         else
@@ -344,7 +365,7 @@ void recOfVeh_2()
             }
             else
             { 
-                recOfVeh_2();
+                //regSearch();
             }
         }
     }
@@ -362,7 +383,7 @@ void recOfVeh_3()
     onlyDisplay od;
     system("clear");
 
-    string path = "/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfVehicles.txt";
+    string path = "RecordOfVehicles.txt";
     ifstream file( path.c_str() );
 
     if( file.is_open() )
@@ -388,18 +409,14 @@ void recOfVeh_3()
             if (choice ==1)
                 od.menu();
             else
-                recOfVeh_2();
+                //recOfVeh_2();
 
-        }
-        else{
+      //  }
+       // else{
             cout<<"Name of the Owner does not foud !!";
-            int choice;
-            cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the Name of the Owner ";
-            cin>>choice;
-            if (choice ==1)
-                od.menu();
-            else
-                recOfVeh_2();
+
+      //      else
+        //        recOfVeh_2();
         }
     }
 
@@ -416,7 +433,7 @@ void features::recOfChall()
 {
     onlyDisplay od;
     vehData vd;
-    int ROCChoice{0};
+    int ROCChoice;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<"*                                                            WELCOME TO                                                               *"<<endl;
@@ -665,7 +682,8 @@ void features::vehSearch()
 void features::trafContBooth()
 {
     onlyDisplay od;
-    int TCBChoice{0};
+    vehData vd;
+    int TCBChoice;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<"*                                                            WELCOME TO                                                               *"<<endl;
@@ -675,13 +693,13 @@ void features::trafContBooth()
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<"*                     Press Your Option :-                                                                                            *"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
-    cout<<"*                                      1. Jalandhar Traffic Control Booth                                                             *"<<endl;
-    cout<<"*                                      2. Amritsar Traffic Control Booth                                                              *"<<endl;
-    cout<<"*                                      3. Chandigarh Traffic Control Booth                                                            *"<<endl;
+    cout<<"*                                      1. Mumbai Traffic Control Booth                                                                *"<<endl;
+    cout<<"*                                      2. Pune Traffic Control Booth                                                                  *"<<endl;
+    cout<<"*                                      3. Nashik Traffic Control Booth                                                                *"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<"*                     Enter 0 For Home                                                                                                *"<<endl;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
-    cout<<"*                     Enter your choice - ", cin>>TCBChoice;
+    cout<<"                      Enter your choice - ", cin>>TCBChoice;
 
     switch (TCBChoice)
     {
@@ -691,24 +709,26 @@ void features::trafContBooth()
             break;
 
         case 1:
-            //trafContBooth_1();
+            vd.booth1();
             break;
 
         case 2:
-           // trafContBooth_2();
+            vd.booth2();
             break;
 
         case 3:
-            //trafContBooth_3();
+            vd.booth3();
             break;
     }
 }
-void trafContBooth_1()
+void vehData::booth1()
 {
     system("clear");
     for (int i = 0; i < 100; ++i) {
-        cout<<"                     Jalandhar City Traffic Control Booth                 "<<endl;
-        cout<<"Vehicles Going out of the City                   Vehicles coming into the City"<<endl;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                                   Mumbai City Traffic Control Booth                                                 *"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*             Vehicles Going out of the City                                               Vehicles coming into the City              *"<<endl;
         cout<<endl<<"      "<<i+1<<"                                             "<<i+5<<endl;
         delay();
 
@@ -718,14 +738,15 @@ void trafContBooth_1()
 
 }
 
-void trafContBooth_2()
+void vehData::booth2()
 {
     system("clear");
 
     for (int i = 0; i < 100; ++i) {
-
-        cout<<"                      Amritsar City Traffic Control Booth                 "<<endl;
-        cout<<"Vehicles Going out of the City                   Vehicles coming into the City"<<endl;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                                      Pune City Traffic Control Booth                                                *"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*             Vehicles Going out of the City                                               Vehicles coming into the City              *"<<endl;
         cout<<endl<<"      "<<i+5<<"                                             "<<i*7<<endl;
         delay();
 
@@ -736,13 +757,15 @@ void trafContBooth_2()
 
 }
 
-void trafContBooth_3()
+void vehData::booth3()
 {
     system("clear");
     for (int i = 0; i < 100; ++i) 
     {
-        cout<<"                      Chandigarh City Traffic Control Booth                 "<<endl;
-        cout<<"Vehicles Going out of the City                   Vehicles coming into the City"<<endl;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                                                                                                                       *"<<endl;
+        cout<<"*                                                      Nashik City Traffic Control Booth                                                *"<<endl;
+        cout<<"*             Vehicles Going out of the City                                               Vehicles coming into the City                *"<<endl;
         cout<<endl<<"      "<<i*16<<"                                             "<<i*22<<endl;
         delay();
         system("clear");
