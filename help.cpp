@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
     
-	cout<<"* Helplinen                                                                      "<<endl;
+	cout<<"* Help line :                                                                      "<<endl;
     cout<<"                                                                                 "<<endl;
     cout<<"                                                                                 "<<endl;
     cout<<"		S.No				CITY			CONTACT DETAILS                         "<<endl;
