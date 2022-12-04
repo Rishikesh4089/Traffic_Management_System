@@ -37,7 +37,7 @@ int main()
     cout<<"		Institute of Liver and Biliary                                              "<<endl;
     cout<<"		Sciences			Mumbai			155353                                  "<<endl;
     cout<<"		Disaster Management of Govt.                                                "<<endl;
-    cout<<"		of NCT of Delhi			Mumbai			1077                                "<<endl;
+    cout<<"		of Mumbai  			Mumbai			1077                                "<<endl;
     cout<<"		Dy.Commissioner of Police                                                   "<<endl;
     cout<<"		(Missing Children and Women)	Mumbai			1094                        "<<endl;
     cout<<"		Traffic Police Helpline		Mumbai			1095                            "<<endl;
@@ -97,12 +97,12 @@ int main()
     cout<<"		All India Institute of Medical                                              "<<endl;
     cout<<"		Sciences (AIIMS)		Mumbai 			022- 26588776                       "<<endl;
     cout<<"		AIDS Diagnostic Centre		Mumbai 			022- 64360750                   "<<endl;
-    cout<<"		Mumbai Psychiatry Centre		Mumbai			022- 2214727                    "<<endl;
-    cout<<"		MP Heart Centre			Mumbai			022- 6413436                        "<<endl;
+    cout<<"		Mumbai Psychiatry Centre	Mumbai			022- 2214727                    "<<endl;
+    cout<<"		MP Heart Centre	Byculla		Mumbai			022- 6413436                        "<<endl;
     cout<<"		National Heart Institute	Mumbai 			022- 6414156                    "<<endl;
     cout<<"		Anand Hospital			Mumbai			022- 2224126                        "<<endl;
     cout<<"		Holy Angles Hospital		Mumbai			022- 6143411                    "<<endl;
-    cout<<"		GM Modi Hospital		Mumbai			022- 6852112                        "<<endl;
+    cout<<"		GM Modi Hospital Sion		Mumbai			022- 6852112                        "<<endl;
     cout<<"		PS Funeral & Ambulance Services                                             "<<endl;
     cout<<"		Private Limited			Mumbai 			09350016581, 08373903017            "<<endl;
     cout<<"		Max Emergency Ambulance		Mumbai 			022 - 40554055                   "<<endl;
