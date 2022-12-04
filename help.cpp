@@ -41,7 +41,7 @@ int main()
     cout<<"		Dy.Commissioner of Police                                                   "<<endl;
     cout<<"		(Missing Children and Women)	Mumbai			1094                        "<<endl;
     cout<<"		Traffic Police Helpline		Mumbai			1095                            "<<endl;
-    cout<<"		Delhi Police Helpline		Mumbai			1090                            "<<endl;
+    cout<<"		Mumbai Police Helpline		Mumbai			1090                            "<<endl;
     cout<<"		Helpline of NDMC Control Room	Mumbai			1267                        "<<endl;
     cout<<"		Ambulance Service		Mumbai			1066                                "<<endl;
     cout<<"		Helpline for Women		Mumbai 			1092                                "<<endl;
@@ -97,7 +97,7 @@ int main()
     cout<<"		All India Institute of Medical                                              "<<endl;
     cout<<"		Sciences (AIIMS)		Mumbai 			022- 26588776                       "<<endl;
     cout<<"		AIDS Diagnostic Centre		Mumbai 			022- 64360750                   "<<endl;
-    cout<<"		Delhi Psychiatry Centre		Mumbai			022- 2214727                    "<<endl;
+    cout<<"		Mumbai Psychiatry Centre		Mumbai			022- 2214727                    "<<endl;
     cout<<"		MP Heart Centre			Mumbai			022- 6413436                        "<<endl;
     cout<<"		National Heart Institute	Mumbai 			022- 6414156                    "<<endl;
     cout<<"		Anand Hospital			Mumbai			022- 2224126                        "<<endl;
