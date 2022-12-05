@@ -1,0 +1,11 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Vehicle no.      Vehicle Type     Owner name       Phone number       Seater     Fuel.       RTO no.       Issued date.       Address
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Vehicle no.           
+Vehicle no.           
+Vehicle no.           
+Vehicle no.           
+Vehicle no.           
+Vehicle no.           
+Vehicle no.           
+Vehicle no.           
