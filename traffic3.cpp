@@ -20,6 +20,7 @@
 
 
 using namespace std;
+int i, choice, dd=0, mm=0, yy=0, hr=0, mint=0, sound=0; 
 
 //Class for display features
 class onlyDisplay
@@ -58,8 +59,8 @@ class vehData
 		void show_data();
 		void header();
 		void regSearch(char *);
-		void delete_data(char *);
-		void update_data(char *);
+		void deleteData(char *);
+		void nameSearch(char *);
         void addChal();
         void chalReg();
         void chalName();
@@ -247,6 +248,7 @@ void features::recOfVeh()
     cout<<"*                                      1. Add a New Vehicle                                                                           *"<<endl;
     cout<<"*                                      2. Search a Vehicle Using registration number                                                  *"<<endl;
     cout<<"*                                      3. Search a Vehicle Using Name of the owner                                                    *"<<endl;
+    cout<<"*                                      4. Delete a Vehicle record                                                                     *"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<"*                     Enter 0 For Home                                                                                                *"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
@@ -270,6 +272,10 @@ void features::recOfVeh()
         case 3:
             vd.chalName();
             break;
+            
+        case 4:
+            vd.deleteData((char *)) ;
+            break; 
     }
 }
 int vehData::store_data()
@@ -287,6 +293,8 @@ int vehData::store_data()
     cout<<"*            Enter 0 to Exit                                                                                                          *"<<endl;
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+    cout<<" Enter here- "<<endl;
+    
 
     fio.open("registration.txt", ios::app | ios::out | ios::in);
 
@@ -378,7 +386,7 @@ void vehData::regSearch(char *)
     }
 }
 
-void recOfVeh_3()
+void vehData::nameSearch(char*)
 {
     onlyDisplay od;
     system("clear");
@@ -388,9 +396,13 @@ void recOfVeh_3()
 
     if( file.is_open() )
     {
-        cout << "                    Welcome to Registration of Vehicles\n" ;
-
-        cout <<endl<< "Write the Name of the Owner of the vehicle you want to searching for\n" ;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                               Welcome to Registration of Vehicles                                                   *"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*            Write the Name of the Owner of the vehicle you want to search for                                                        *"<<endl;
+        cout<<"*            Enter 0 to Exit                                                                                                          *"<<endl;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<" Enter here- "<<endl;
         string word ;
         cin >> word ;
 
@@ -403,6 +415,11 @@ void recOfVeh_3()
         if (countwords > 0){
             cout << "The Name of the Owner " << word << "' has been found in our records."<<endl ;
 
+            if(candidate=="0")
+            {
+                od.menu();
+            }
+            else();
             int choice;
             cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the Name of the Owner";
             cin>>choice;
@@ -479,12 +496,14 @@ void vehData::addChal()
     fstream fio;
     string line;
     coord(15,0);
-    cout << "Welcome to Challan Management System\n"<<endl;
-
-    cout<<"Enter Registration number of the Vehicle in the first line "<<endl;
-    cout<<"Enter Name of the owner in the second line "<<endl;
-    cout<<endl<<"Enter './' to Exit ";
-    fio.open("/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfChallan.txt", ios::app | ios::out | ios::in);
+    cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;
+    cout<<"*                                                Welcome to Challan Management System                                                 *"<<endl;
+    cout<<"*                                                                                                                                     *"<<endl;         
+    cout<<"* Enter Registration number of the Vehicle in the first line                                                                          *"<<endl;
+    cout<<"* Enter Name of the owner in the second line                                                                                          *"<<endl;
+    cout<<"* Enter '0' to Exit                                                                                                                   *"<<endl;
+    fio.open("RecordOfChallan.txt", ios::app | ios::out | ios::in);
 
     // Execute a loop If file successfully Opened
     while (fio) {
@@ -493,7 +512,7 @@ void vehData::addChal()
         getline(cin, line);
 
         // Press -1 to exit
-        if (line == "./")
+        if (line == "0")
             break;
 
         // Write line in file
@@ -512,14 +531,16 @@ void vehData::chalReg()
 {
     onlyDisplay od;
     system("clear");
-    string path = "/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfChallan.txt";
+    string path = "RecordOfChallan.txt";
     ifstream file( path.c_str() );
 
     if( file.is_open() )
     {
-        cout << "               Welcome to Challan Management System\n"<<endl;
-
-        cout <<endl<< "Write the registration number of the vehicle you want to searching for\n" ;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*                                                Welcome to Challan Management System                                                 *"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;         
+        cout<<"Write the registration number of the vehicle you want to searching for" ;
         string word ;
         cin >> word ;
 
@@ -531,15 +552,13 @@ void vehData::chalReg()
         }
         if (countwords > 0){
             cout << "The Registration number '" << word << "' has been found in our records."<<endl ;
-
             int choice;
-            cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the registration number.";
+            cout<<endl<<"Enter 0 to go to home screen and enter 2 for again entering the registration number.";
             cin>>choice;
-            if (choice ==1)
+            if (choice ==0)
                 od.menu();
             else
                 chalReg();
-
         }
         else{
             cout<<"Registration number does not foud !!";
@@ -552,7 +571,6 @@ void vehData::chalReg()
                 chalName();
         }
     }
-
     else
     {
         cerr << "Error! 402!\n" ;
@@ -565,14 +583,16 @@ void vehData::chalName()
 {
     onlyDisplay od;
     system("clear");
-    string path = "/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfChallan.txt";
+    string path = "RecordOfChallan.txt";
     ifstream file( path.c_str() );
 
     if( file.is_open() )
     {
-        cout << "               Welcome to Challan Management System\n"<<endl;
-
-        cout <<endl<< "Write the Name of the Owner of the vehicle you want to searching for\n" ;
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;
+        cout<<"*                                                Welcome to Challan Management System                                                 *"<<endl;
+        cout<<"*                                                                                                                                     *"<<endl;         
+        cout<<"Write the Name of the Owner of the vehicle you want to searching for\n" ;
         string word ;
         cin >> word ;
 
@@ -583,12 +603,11 @@ void vehData::chalName()
             if( word == candidate ) ++countwords ;
         }
         if (countwords > 0){
-            cout << "The Name of the Owner " << word << "' has been found in our records."<<endl ;
-
+            cout << "The Name of the Owner '" << word << "' has been found in our records."<<endl ;
             int choice;
-            cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the Name of the Owner";
+            cout<<endl<<"Enter 0 to go to home screen and enter 2 for again entering the Name of the Owner";
             cin>>choice;
-            if (choice ==1)
+            if (choice ==0)
                 od.menu();
             else
                 chalName();
@@ -596,21 +615,19 @@ void vehData::chalName()
         else{
             cout<<"Name of the Owner does not foud !!";
             int choice;
-            cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the Name of the Owner ";
+            cout<<endl<<"Enter 0 to go to home screen and enter 2 for again entering the Name of the Owner ";
             cin>>choice;
-            if (choice ==1)
+            if (choice ==0)
                 od.menu();
             else
                 chalName();
         }
     }
-
     else
     {
         cerr << "Error! 402!\n" ;
         delay();
         od.menu();
-
     }
 }
 
@@ -631,16 +648,14 @@ void features::vehSearch()
     cout<<"*                                                                                                                                     *"<<endl;
     cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
 
-    string path = "/home/lamecodes/CLionProjects/untitled/cmake-build-debug/RecordOfVehicles.txt";
+    string path = "RecordOfVehicles.txt";
     ifstream file( path.c_str() );
     system("clear");
 
     if( file.is_open() )
     {
-
         string word ;
         cin >> word ;
-
         int countwords = 0 ;
         string candidate ;
         while( file >> candidate ) // for each candidate word read from the file
@@ -649,21 +664,20 @@ void features::vehSearch()
         }
         if (countwords > 0){
             cout << "The registration number " << word << "' has been found in our records."<<endl ;
-
             int choice;
-            cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the registration number ";
+            cout<<endl<<"Enter 0 to go to home screen and enter 1 for entering the registration number ";
             cin>>choice;
-            if (choice ==1)
+            if (choice ==0)
                 od.menu();
             else
                 vehSearch();
         }
         else{
-            cout<<"Registration number does not foud !!";
+            cout<<"Registration number not found !!";
             int choice;
-            cout<<endl<<"Enter 1 to go to home screen and enter 2 for again entering the registration number ";
+            cout<<endl<<"Enter 0 to go to home screen and enter 1 for entering the registration number ";
             cin>>choice;
-            if (choice ==1)
+            if (choice ==0)
                 od.menu();
             else
                 vehSearch();
@@ -775,6 +789,118 @@ void vehData::booth3()
 //Helpline Information and nearby hospitals
 void features::helpInfo()
 {
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;        
+        cout<<"                                                             * Help line :                                                               "<<endl;
+        cout<<"                                                                                                                                         "<<endl;
+        cout<<"		S.No				               CITY		              	CONTACT DETAILS                                                         "<<endl;
+        cout<<"_________________________________________________________________________________________________________________________________________"<<endl;
+        cout<<"                                                                                                                                         "<<endl;
+        cout<<"		Police Control Room		Anywhere in India	100                                                                                     "<<endl;
+        cout<<"		Fire Control Room		Mumbai 		        101                                                                                     "<<endl;
+        cout<<"		Ambulance Helpline		Mumbai 			102                                                                                         "<<endl;
+        cout<<"		Centralised Accident &                                                                                                              "<<endl;
+        cout<<"		Trauma Services (CATS)		Mumbai		        1099                                                                                "<<endl;
+        cout<<"		Ambulance Helpline 		Mumbai		        1092                                                                                    "<<endl;
+        cout<<"		Women's Helpline		Mumbai		        1091                                                                                    "<<endl;
+        cout<<"		Women's Helpline		Anywhere in India	181                                                                                     "<<endl;
+        cout<<"		Senior Citizen Helpline		Mumbai		        1091 , 1291                                                                         "<<endl;
+        cout<<"		Anti-Obscene Calls Cell		Mumbai		        1091	                                                                            "<<endl;
+        cout<<"		Anti Stalking Cell		Mumbai		        1091                                                                                    "<<endl;
+        cout<<"		AIDS Helpline			Anywhere in India	1097                                                                                    "<<endl;
+        cout<<"		Medical Helpline, State		Maharashtra                                                                                             "<<endl;
+        cout<<"		Anti Poison			Mumbai		        1066                                                                                        "<<endl;
+        cout<<"		Eye Donation			Mumbai			1919                                                                                        "<<endl;
+        cout<<"		Fire Control Room		Mumbai 			101                                                                                         "<<endl;
+        cout<<"		Indian Red Cross Society	Mumbai			011- 23711551                                                                           "<<endl;
+        cout<<"		Directory Enquiry		Mumbai			197                                                                                         "<<endl;
+        cout<<"		CGHS Helpline, Directorate                                                                                                          "<<endl;
+        cout<<"		General of Health Services	Mumbai			155224                                                                                  "<<endl;
+        cout<<"		Institute of Liver and Biliary                                                                                                      "<<endl;
+        cout<<"		Sciences			Mumbai			155353                                                                                          "<<endl;
+        cout<<"		Disaster Management of Govt.                                                                                                        "<<endl;
+        cout<<"		of Mumbai  			Mumbai			1077                                                                                            "<<endl;
+        cout<<"		Dy.Commissioner of Police                                                                                                           "<<endl;
+        cout<<"		(Missing Children and Women)	Mumbai			1094                                                                                "<<endl;
+        cout<<"		Traffic Police Helpline		Mumbai			1095                                                                                    "<<endl;
+        cout<<"		Mumbai Police Helpline		Mumbai			1090                                                                                    "<<endl;
+        cout<<"		Helpline of NDMC Control Room	Mumbai			1267                                                                                "<<endl;
+        cout<<"		Ambulance Service		Mumbai			1066                                                                                        "<<endl;
+        cout<<"		Helpline for Women		Mumbai 			1092                                                                                        "<<endl;
+        cout<<"		ORBO C.N.Centre, AIIMS                                                                                                              "<<endl;
+        cout<<"		(for donation of organs)	Mumbai 			1060                                                                                    "<<endl;
+        cout<<"                                                                                                                                         "<<endl;
+        cout<<"	                                                     	* BLOOD BANKS IN MUMBAI *                                                       "<<endl;
+        cout<<"                                                                                                                                         "<<endl;		
+        cout<<"		EMERGENCY HELPLINES.		CITY			CONTACT DETAILS                                                                         "<<endl;
+        cout<<"_________________________________________________________________________________________________________________________________________"<<endl;
+        cout<<"                                                                                                                                         "<<endl;		
+        cout<<"		AIIMS				Mumbai 			022- 26593726, 26594438                                                                         "<<endl;
+        cout<<"		Bombay Hospital			Mumbai			022- 66364887                                                                               "<<endl;
+        cout<<"		White Cross Blood Bank		Mumbai  		022- 26831063, 26844140                                                                 "<<endl;
+        cout<<"		Batra Hospital and Medical                                                                                                          "<<endl;
+        cout<<"		Research Centre			Mumbai			022- 29958747, 29957487, 29956509                                                           "<<endl;
+        cout<<"		Bhagvati Hospital		Mumbai			022- 64788237, 64788249                                                                     "<<endl;
+        cout<<"		Apollo Blood Bank		Mumbai 			022- 26825707, 26925858, 26925801                                                           "<<endl;
+        cout<<"		Lions Blood Bank		Mumbai 			022- 42258080, 42258494                                                                     "<<endl;
+        cout<<"		Dharmashila Cancer Foundation                                                                                                       "<<endl;
+        cout<<"		& Research Centre		Mumbai			022- 43066424-25, 22617771-75                                                               "<<endl;
+        cout<<"		Sir JJ Hospital			Mumbai			022 - 25750000, 25751111                                                                    "<<endl;
+        cout<<"		Indian Red Cross Society	Mumbai			022 - 23711551                                                                          "<<endl;
+        cout<<"		Batra Hospital & Medical                                                                                                            "<<endl;
+        cout<<"		Research Centre			Mumbai			022-26056148, 26056153, 26057154                                                            "<<endl;
+        cout<<"		Jai Prakash Narayan Apex                                                                                                            "<<endl;
+        cout<<"		Trauma Centre			Mumbai		 	022- 2673 1166, 2673 1179                                                                   "<<endl;
+        cout<<"		Max Balaji Hospital		Mumbai 			022- 66242515, Extension- 2031                                                              "<<endl;
+        cout<<"		Fortis Flt. Lt. Rajan Dhall                                                                                                         "<<endl;
+        cout<<"		Hospital			Mumbai 			022- 42776222, Extension- 5850                                                                  "<<endl;
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<"                                                                                                                                         "<<endl;		
+        cout<<"	                                                      	* 24 HOUR AMBULANCE IN MUMBAI                                                   "<<endl;
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<"		EMERGENCY HELPLINES.		CITY			CONTACT DETAILS                                                                         "<<endl;
+        cout<<"_________________________________________________________________________________________________________________________________________"<<endl;
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<"		All India Institute of                                                                                                              "<<endl;
+        cout<<"		Medical Sciences (AIIMS)	Mumbai			022- 26588776                                                                           "<<endl;
+        cout<<"		Centralized Accident Trauma                                                                                                         "<<endl;
+        cout<<"		Service (CATS)			Mumbai 			102, 1099                                                                                   "<<endl;
+        cout<<"		Escort Hospital			Mumbai 			022- 26825000                                                                               "<<endl;
+        cout<<"		Moolchand Hospital		Mumbai			022- 42000000                                                                               "<<endl;
+        cout<<"		Batra Hospital			Mumbai 			022- 26083747                                                                               "<<endl;
+        cout<<"		Rajiv Gandhi Cancer Institute	Mumbai 			022- 27051011 to 29                                                                 "<<endl;
+        cout<<"		National Heart Institute	Mumbai 			022- 26441293                                                                           "<<endl;
+        cout<<"		Sir Ganga Ram Hospital		Mumbai			022- 25750000, 25757575                                                                 "<<endl;
+        cout<<"		Vidyasagar Institute of Mental                                                                                                      "<<endl;
+        cout<<"		Health and NeuroSciences                                                                                                            "<<endl;
+        cout<<"	    (VIMHANS)			    Mumbai			022- 26924302                                                                               "<<endl;
+        cout<<"		All India Institute of Medical                                                                                                      "<<endl;
+        cout<<"		Sciences (AIIMS)		Mumbai 			022- 26588776                                                                               "<<endl;
+        cout<<"		AIDS Diagnostic Centre		Mumbai 			022- 64360750                                                                           "<<endl;
+        cout<<"		Mumbai Psychiatry Centre	Mumbai			022- 2214727                                                                            "<<endl;
+        cout<<"		MP Heart Centre	Byculla		Mumbai			022- 6413436                                                                            "<<endl;
+        cout<<"		National Heart Institute	Mumbai 			022- 6414156                                                                            "<<endl;
+        cout<<"		Anand Hospital			Mumbai			022- 2224126                                                                                "<<endl;
+        cout<<"		Holy Angles Hospital		Mumbai			022- 6143411                                                                            "<<endl;
+        cout<<"		GM Modi Hospital Sion		Mumbai			022- 6852112                                                                            "<<endl;
+        cout<<"		PS Funeral & Ambulance Services                                                                                                     "<<endl;
+        cout<<"		Private Limited			Mumbai 			09350016581, 08373903017                                                                    "<<endl;
+        cout<<"		Max Emergency Ambulance		Mumbai 			022 - 40554055                                                                          "<<endl;
+        cout<<"		Goodmans Rescue Ambulance                                                                                                           "<<endl;
+        cout<<"		Service				Mumbai			022 - 29231665, 46566890                                                                        "<<endl;
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<"	                                                            	* MISCELLANEOUS                                                         "<<endl;
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<"		NON-EMERGENCY HELPLINES		CITY			CONTACT DETAILS                                                                         "<<endl;
+        cout<<"_________________________________________________________________________________________________________________________________________"<<endl;
+        cout<<"                                                                                                                                         "<<endl;
+        cout<<"		Insurance Regulatory and Development                                                                                                "<<endl;
+        cout<<"		Authority (IRDA)		  Anywhere in India	155255/ 1800 4254732                                                                    "<<endl;
+        cout<<"		Reproductive Health, Family                                                                                                         "<<endl; 
+        cout<<"		Planning and Infant Health	Mumbai			1800-11-6555                                                                            "<<endl;
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<"                                                                                                                                         "<<endl;	
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;        
+
         onlyDisplay od;
         int choice;
         cout << endl << "Enter 1 to go Home Page" << endl;
@@ -788,6 +914,15 @@ void features::helpInfo()
         {
             cout << endl << "Enter Valid option !!";
         }
+}
+
+/*DATE and TIME*/
+void date_time() 
+{
+	time_t t = time(NULL);
+  	struct tm tm = *localtime(&t);
+  	dd = tm.tm_mday; mm = tm.tm_mon + 1; yy = tm.tm_year + 1900-2000;
+  	hr = tm.tm_hour; mint = tm.tm_min;
 }
 
 int main()
