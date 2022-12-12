@@ -1,11 +1,14 @@
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Vehicle no.      Vehicle Type     Owner name       Phone number       Seater     Fuel.       RTO no.       Issued date.       Address
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Vehicle no.           
-Vehicle no.           
-Vehicle no.           
-Vehicle no.           
-Vehicle no.           
-Vehicle no.           
-Vehicle no.           
-Vehicle no.           
+MH4627           4 wheeler        Ashish Kumar      9374518366        2          Diesel      975678
+GJ4826           2 wheeler        Richa Shah        8642568853        2          Petrol      34563
+MH9582           2 wheeler        Kunal Mehra       7695324567        2          Diesel      34567
+MH8593           4 wheeler        Sanjay Sharma     9893624284        4          Petrol      76554
+MH1046           4 wheeler        Chetan Mhatre     9983635495        4          Diesel      456787
+GJ8594           4 wheeler        Anya Rao          9153846594        4          Diesel      56732
+RJ2927           4 wheeler        Firoz Akhtar      8644378494        4          Diesel      765436
+MH8850           4 wheeler        Dinesh Shah       8765432134        4          Petrol      456432
+MH2750           2 wheeler        Rishi Prabhu      9876543234        2          Petrol      654356
+MH8779           4 wheeler        Nandika Bhatt     7890987654        4          Diesel      456778
+RJ2391           2 wheeler        Shyna Shah        9877809876        2          Petrol      67899
